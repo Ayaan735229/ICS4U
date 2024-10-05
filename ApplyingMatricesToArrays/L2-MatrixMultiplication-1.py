@@ -16,4 +16,5 @@ Q = [[0.5, 1.4, 1], [1, 2, 0.5]]
 P = [[2.20], [3.10], [2.60]]
 
 R = mmult(P, Q)
-print(R)
+print(f"Ken spent ${R[0][0]:.2f}")
+print(f"Karen spent ${R[1][0]:.2f}")
