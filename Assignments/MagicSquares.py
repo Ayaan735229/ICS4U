@@ -32,10 +32,6 @@ def generateMagicSquare(dim, shift, zeroed = False):
         for j in range(dim):
             shiftedArr.append(tempArr[(j + dim - shift) % dim])
         M.append(shiftedArr)
-    
-    for line in M:
-        print (line)
-    print("\n")
     return M
 
 def addMatrices(M1, M2):
@@ -77,5 +73,4 @@ A = generateMagicSquare(5, 2)
 B = generateMagicSquare(5, 3, True)
 sumMatrix = addMatrices(A, B)
 
-print(isMagic(sumMatrix))	
-
+print(isMagic(sumMatrix))
