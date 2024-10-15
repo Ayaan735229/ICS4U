@@ -1,17 +1,38 @@
+"""
+Ayaan Khan
+735229
+RandomMagicSquares.py
+
+Generates a random magic square using a prime number ranging from 5 to 19.
+"""
+
 import math
 import random
 
+
 def checkValidity(n):
+    """
+    Checks the validity of a provided n for a magic square dimension 
+    n (int) Potential dimensions for the magic square
+    """
     # dims cannot be less than 5
     if n < 5 or n > 19:
         return False
-    # dims must be prime
+    # Check every number from 2 to half of n to see if they're divisible
+    # if they are, then n is NOT prime
     for i in range(2, math.floor(n/2)):
         if n % i == 0:
             return False
     return True
 
+
 def initRow(dim, zeroed = False):
+    """
+    Creates the initial row for the square
+    dim (int)         The dimensions of the square
+    zeroed (bool)     Determines the type of square
+    arr_init (int[])  First row of of the square
+    """
     arr_init = []
     if zeroed:
         arr_init = [n * dim for n in range(0, dim)]
@@ -69,8 +90,28 @@ def isMagic(M):
       
     return True
 
-A = generateMagicSquare(5, 2)
-B = generateMagicSquare(5, 3, True)
-sumMatrix = addMatrices(A, B)
+if __name__ == "__main__":
+    isValid = False
+    
+    while (not isValid):
+        user_dims = int(input("Enter a prime number from 5-19 (inclusive): "))
+        isValid = checkValidity(user_dims)
+    
+    A = generateMagicSquare(user_dims, 2)
+    B = generateMagicSquare(user_dims, 3, True)
+    sumMatrix = addMatrices(A, B)
+    
+    print("Square One")
+    for line in A:
+        print(line)
+        
+    print("\nSquare Two")
+    for line in B:
+        print(line)
+    
+    print("\nFinal Magic Square")
+    for line in sumMatrix:
+        print(line)
+        
+    print(isMagic(sumMatrix))
 
-print(isMagic(sumMatrix))
