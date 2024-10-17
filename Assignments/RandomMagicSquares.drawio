@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0" version="24.7.17">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1687" dy="932" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="2300" math="0" shadow="0">
+    <mxGraphModel dx="819" dy="453" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="2300" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -720,8 +720,8 @@
         <mxCell id="HWULfpj-r3Tv-3Oo2EiX-94" value="&lt;div&gt;A = generateMagicSquare(userDims, 2)&lt;/div&gt;&lt;div&gt;B = generateMagicSquare(userDims, 3, True)&lt;/div&gt;&lt;div&gt;sumMatrix = addMatrices(A, B)&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="409.67" y="2074" width="260" height="46" as="geometry" />
         </mxCell>
-        <mxCell id="HWULfpj-r3Tv-3Oo2EiX-98" value="&lt;div&gt;OUTPUT &quot;Square One&quot;&lt;/div&gt;&lt;div&gt;OUTPUT A&lt;div&gt;OUTPUT &quot;Square Two&quot;&lt;/div&gt;OUTPUT B&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;OUTPUT &quot;Magic Square&quot;&lt;/div&gt;OUTPUT sumMatrix&lt;/div&gt;&lt;div&gt;OUTPUT isMagic(sumMatrix)&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="429.67" y="2140" width="220" height="120" as="geometry" />
+        <mxCell id="HWULfpj-r3Tv-3Oo2EiX-98" value="&lt;div&gt;OUTPUT &quot;Square One&quot;&lt;/div&gt;&lt;div&gt;OUTPUT A&lt;div&gt;OUTPUT &quot;Square Two&quot;&lt;/div&gt;OUTPUT B&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;OUTPUT &quot;Magic Square&quot;&lt;/div&gt;OUTPUT sumMatrix&lt;/div&gt;&lt;div&gt;OUTPUT calcualteMagicSum(userDims)&lt;br&gt;&lt;/div&gt;&lt;div&gt;OUTPUT isMagic(sumMatrix)&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="399.34" y="2140" width="280.66" height="130" as="geometry" />
         </mxCell>
         <mxCell id="HWULfpj-r3Tv-3Oo2EiX-105" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="HWULfpj-r3Tv-3Oo2EiX-102" target="HWULfpj-r3Tv-3Oo2EiX-104">
           <mxGeometry relative="1" as="geometry" />
