@@ -13,6 +13,8 @@ import random
 def checkValidity(n):
     """
     Checks the validity of a provided n for a magic square dimension 
+    Precondition: have already gotten a number from the user
+
     n (int) Potential dimensions for the magic square
     """
     # dims cannot be less than 5
@@ -29,6 +31,8 @@ def checkValidity(n):
 def getInitRow(dim, zeroed = False):
     """
     Creates the initial row for the square
+    Precondition: Recieved a dimension from the user and ensured its validity
+
     dim (int)         The dimensions of the square
     zeroed (bool)     Determines the type of square
 
@@ -50,6 +54,8 @@ def getInitRow(dim, zeroed = False):
 def generateTrivialMagicSquare(dim, shift, zeroed = False):
     """
     Generates a magic square given the initial row and the shift
+    Precondition: Recieved a valid dimension from user and generated an initial row
+
     dim (int)       The dimensions of the square
     shift (int)     The shift to be used per row
     zeroed (bool)   Determines the type of square, to be passed to getInitRow
@@ -77,6 +83,8 @@ def generateTrivialMagicSquare(dim, shift, zeroed = False):
 def addMatrices(M1, M2):
     """
     Takes two equal dimension matrices and adds them together
+    Precondition: Have (created) two matrices 
+
     M1 (int[][]) The first matrix to add
     M2 (int[][]) The second matrix to add
 
@@ -96,6 +104,8 @@ def addMatrices(M1, M2):
 def isMagic(M):
     """
     Checks whether a given matrix is a magic square, trivial or normal
+    Precondition: Have a matrix to check
+
     M (int[][]) The matrix to be checked
 
     dim (int)           Dimensions of the matrix
@@ -139,6 +149,8 @@ def isMagic(M):
 def calculateMagicSum(dim):
     """
     Calculates the sum of the Magic Square
+    Precondition: Have a valid magic square
+
     M (int[][]) The magic square
 
     magicSumArr (int[]) List of each term to be divided in the magic sum
@@ -149,6 +161,22 @@ def calculateMagicSum(dim):
     magicSumArr = [n for n in range(1, dim**2+1)]
     magicSum = int(sum(magicSumArr)/dim)
     return magicSum
+
+
+def matrixFormattedPrint(M):
+    """
+    Outputs a matrix in a cleaner, 3 column per number, format
+    Precondition: Have a matrix
+
+    M (int[][]) The matrix to be printed
+    """
+    print("Square One")
+    for row in M:
+        for num in row:
+            # Print the number with a 3 col wide space, no new line
+            print(f"{num:3d}", end=" ")
+        # Print the line seperator
+        print()
     
 
 if __name__ == "__main__":
@@ -164,21 +192,19 @@ if __name__ == "__main__":
     A = generateTrivialMagicSquare(userDims, 2)
     B = generateTrivialMagicSquare(userDims, 3, True)
     sumMatrix = addMatrices(A, B)
+
+    magicSum = calculateMagicSum(userDims)
     
     # Print each matrix, formatted, the magic sum, as well as whether the final matrix is magic
     print("Square One")
-    for line in A:
-        print(line)
+    matrixFormattedPrint(A)
         
     print("\nSquare Two")
-    for line in B:
-        print(line)
+    matrixFormattedPrint(B)
     
     print("\nMagic Square")
-    for line in sumMatrix:
-        print(line)
+    matrixFormattedPrint(sumMatrix)
 
-    print("\nMagic Sum:", calculateMagicSum(userDims))
+    print("\nMagic Sum:", magicSum)
         
     print("This square is Magic:", isMagic(sumMatrix))
-
