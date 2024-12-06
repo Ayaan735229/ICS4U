@@ -29,13 +29,12 @@ class Point():
         yValid = isinstance(self.y, Number) and not isinstance(self.y, bool)
         return xValid and yValid
 
-    def getCoords(self) -> tuple[int | None, int | None]:
+    def getCoords(self) -> tuple[Number | None, Number | None]:
         return (self.x, self.y) if self.getValid() else (None, None)
 
 class Polygon():
     def __init__(self):
         self.__tail = None
-        self.__pointCount = 0
 
     def __str__(self) -> str:
         pointsStr = ""
@@ -48,7 +47,7 @@ class Polygon():
             pointsStr += " -> "
         return pointsStr
         
-    def addPoint(self, coords: tuple[int]):
+    def addPoint(self, coords: tuple[Number, Number]):
         newNode = Point(coords[0], coords[1])
         print(newNode.getValid())
         if not self.__tail:
@@ -59,4 +58,3 @@ class Polygon():
             self.__tail.next = newNode
             self.__tail = newNode
             self.__tail.next = tempNode
-        self.__pointCount += 1
