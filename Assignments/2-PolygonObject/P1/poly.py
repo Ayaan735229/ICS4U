@@ -3,18 +3,22 @@ Ayaan Khan
 735229
 Assignment: Polygon Object (P1)
 File: poly.py
-Purpose: Create a basic polygon class that uses a linked list to manage points
+Purpose: Create a basic polygon class that uses a linked list to manage all of its points
 To be extended in another assignment
 """
 
 class Point():
+    """
+    A singular point within a Polygon
+
+    x, y (int)          Ditto, stored within Point() itself
+    next (None|Point)   The next point in the linked list
+    """
+
     def __init__(self, x = None, y = None):
         """
         Initializes the current Point
-        x, y (int) The x and y coordinates of the current point, given by user
-
-        self.x, self.y (int)        Ditto, stored within Point() itself
-        self.next (None | Point)    The next point in the Linked List
+        x, y (int)  The x and y coordinates of the current point, given by user
         """
         self.x = x
         self.y = y
@@ -30,25 +34,45 @@ class Point():
     def getValid(self) -> bool:
         """
         Checks that whether the self point is a int | float
-        No pre-req, since this only checks whether its valid
+        Pre-req: None; doesn't expect self.x and self.y to be valid, only checks it
+
+        xValid (bool) Whether self.x is valid
+        yValid (bool) Whether self.y is valid
         """
-        # Since bool is simply a subsets of Number, the coord also needs to be made sure that its a valid point
+        # Check whether the x and y coordiantes are an integers or flaots
+        # Also need to make sure they aren't booleans, as they are considered 
+        # numbers and can return a false positive without the extra check
         xValid = (isinstance(self.x, int) or isinstance(self.x, float)) and not isinstance(self.x, bool)
         yValid = (isinstance(self.y, int) or isinstance(self.y, float)) and not isinstance(self.y, bool)
         return xValid and yValid
 
     def getCoords(self) -> tuple[int | float | None, int | float | None]:
+        """
+        Returns the coordinates if the self coords are valid, otherwise a None point
+        Pre-req:    None; self.x and self.y should be filled, but not necessary as
+                    something else will return if that is not the case
+        """
         return (self.x, self.y) if self.getValid() else (None, None)
 
 class Polygon():
+    """
+    The entire polygon, with methods to add points and to represent the polygon as a string
+    __tail (Point)  The final point of the list. Convenient, because it allows quick access to the start and end the list
+    """
+
     def __init__(self):
+        """
+        Initializes a Polygon object, no parameters needed
+        """
         self.__tail = None
 
     def __str__(self) -> str:
         """
         Takes the points of a polygon class and outputs them
+        Pre-req: All the coordinates are valid
+
         pointsStr (str) The final string
-        curr (Point) The current Point to be looked at
+        curr (Point)    The current Point to be looked at
         """
         pointsStr = ""
         
@@ -69,9 +93,11 @@ class Polygon():
     def addPoint(self, x: int | float, y: int | float):
         """
         Adds a point to the polygon object
-        x, y (int|float) The x and y coordinates to add as a point
+        Pre-req: The user has gotten the points that they need.
+
+        x, y (int|float)    The x and y coordinates to add as a point
         
-        newNode (Point) A Point created from the x and y coords
+        newNode (Point)     A Point created from the x and y coords
         """
         # Create a new point, not yet added to the linked list system
         newNode = Point(x, y)
