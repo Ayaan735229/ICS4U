@@ -31,7 +31,9 @@ class Point():
         Returns the self point as a string if the current Point data is valid, otherwise an error message
         Expected pre-req: self.x and self.y are filled out
         """
-        return f'({self.x}, {self.y})' if self.getValid() else "Invalid point data"
+        if self.getValid():
+            return f'({self.x}, {self.y})'
+        return "Invalid point data"
     
     def getValid(self) -> bool:
         """
@@ -54,7 +56,9 @@ class Point():
         Pre-req:    None; self.x and self.y should be filled, but not necessary as
                     something else will return if that is not the case
         """
-        return (self.x, self.y) if self.getValid() else (None, None)
+        if self.getValid():
+            return (self.x, self.y)
+        return (None, None)
     
     def distance(self, other: 'Point') -> float|None:
         """
@@ -63,7 +67,9 @@ class Point():
         """
         # a^2 + b^2 = c^2
         # a = (a1-a2), b = (b1-b2)
-        return ((self.x-other.x)**2 + (self.y-other.y)**2)**0.5 if self.getValid() else None
+        if self.getValid():
+            return ((self.x-other.x)**2 + (self.y-other.y)**2)**0.5
+        return None
     
 
 class Polygon():
