@@ -17,7 +17,7 @@ class Point():
     next (None|Point)   The next point in the linked list
     """
 
-    def __init__(self, x: int|float = None, y = None):
+    def __init__(self, x: int|float = None, y = int|float = None):
         """
         Initializes the current Point
         x, y (int)  The x and y coordinates of the current point, given by user
@@ -257,8 +257,6 @@ class Polygon():
         
         # Otherwise, follow the step found at
         # https://www.wikihow.com/Calculate-the-Area-of-a-Polygon#Finding-the-Area-of-Irregular-Polygons
-
-        
         xByY = curr.x * curr.next.y
         yByX = curr.y * curr.next.x
 
