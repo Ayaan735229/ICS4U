@@ -143,25 +143,56 @@ class Polygon():
             self.__tail = newNode
         self.__len += 1
 
+    def getAngle(self, point: Point):
+        """
+        Uses the cosine law to determine the angle of the point after the one given
+        
+        point (Point)   The first point in the triangle. Not the one to check the angle for
+        
+        A (Point)       The point to check the angle for
+        B, C (Point)    The other points in the triangle
+        a (float)       Distance between B and C, opposite A
+        b (float)       Distance between A and C, opposite B
+        c (float)       Distance between A and B, opposite C
+        angA (float)    Smallest value of angle A
+        """
+        # Get all three points
+        A = point.next
+        B = point
+        C = A.next
+
+        # Get all distances opposite to the points
+        a = B.distance(C)
+        b = A.distance(C)
+        c = A.distance(B)
+        # cos A = (b^2 + c^2 - a^2) / 2bc
+        # Use the cosine law to get the smallest angle value
+        angA = math.acos((b**2+c**2-a**2)/(2*b*c))
+        return angA
+
     def checkRegularPolygon(self) -> bool:
         """
         Checks whether this Polygon object represents a geometrically regular polygon.
 
         curr (Point)    The Point currently being looked at
-        model (float)   The length that each side should be if this polygon is regular
-        dist (float)    The length of the side from curr to curr.next
+        mDist (float)   The length that each side should be if this polygon is regular
+        cdist (float)   The length of the side from curr to curr.next
+        mAng (float)    The size that each angle should be if the polygon is regular
+        cAng (float)    The size of the angle at curr.next
         """
         # Grab the initial point, which is the tail
         curr = self.__tail
         # Grab the model side length by grabbing its distance to the next point
-        model = curr.distance(curr.next)
+        mDist = curr.distance(curr.next)
+        mAng = self.getAngle(curr)
         # Loop from the head to the tail
         curr = curr.next
         while (not curr == self.__tail):
             # Compare the distance from curr to curr.next to the model distance
-            dist = curr.distance(curr.next)
-            if not dist == model or dist == None:
-                # If it isnt, end the function early and return False to signify an irregular polygon
+            cDist = curr.distance(curr.next)
+            cAng = self.getAngle(curr)
+            if not cDist == mDist or cDist is None or not cAng == mAng:
+                # If it isn't, end the function early and return False to signify an irregular polygon
                 return False
             curr = curr.next
 
