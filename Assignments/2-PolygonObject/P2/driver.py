@@ -85,22 +85,23 @@ def getPointsNumeric(pointsStr: str) -> list[tuple[int|float, int|float]]:
 if __name__ == "__main__":
     # Get the file text
     fileText = readFile()
-    # Input the first line, which should have all the points, into getPoints Numeric
-    pointsNumeric = getPointsNumeric(fileText[0])
-    # Create a new polygon object
-    p = Polygon()
+    if len(fileText) > 0:
+        # Input the first line, which should have all the points, into getPoints Numeric
+        pointsNumeric = getPointsNumeric(fileText[0])
+        # Create a new polygon object
+        p = Polygon()
 
-    # Add each point into p using the Polygon.addPoint method
-    for x, y in pointsNumeric:
-        p.addPoint(x, y)
+        # Add each point into p using the Polygon.addPoint method
+        for x, y in pointsNumeric:
+            p.addPoint(x, y)
 
-    # Print p
-    print(p)
+        # Print p
+        print(p)
 
-    perimeter = p.perimeter()
-    area = p.area()
+        perimeter = p.perimeter()
+        area = p.area()
 
-    print("Perimeter:", perimeter)
-    print("Area:", area)
-    p.plot()
+        # print("Perimeter:", perimeter)
+        # print("Area:", area)
+        p.plot()
     
