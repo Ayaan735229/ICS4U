@@ -1,4 +1,5 @@
 from polynomial import Polynomial
+from polynomialLinkedList import Polynomial as PolynomialLL
 
 # Driver
 P = Polynomial([0, 0, 1, 2, 0, -3])
