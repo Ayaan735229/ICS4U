@@ -73,7 +73,7 @@ class Polynomial:
 
     def derivative(self) -> "Polynomial":
         order = self.get_order()
-        deriv_terms = [0]*(order-1)
+        deriv_terms = [0]*(order)
 
         curr = self.head
         while (curr and curr.degree > 1):
@@ -87,7 +87,7 @@ class Polynomial:
 
         return Polynomial(deriv_terms)
 
-    def ivt(self, x1, x2) -> float:
+    def newtons_method(self, x1, x2) -> float:
         if self.f(x1) * self.f(x2) >= 0:
             return None
         
@@ -100,10 +100,10 @@ class Polynomial:
 
             if round(xn, 3) == round(xn1, 3):
                 found = True
-                return round(xn1, 4)
+                return xn1
             xn = xn1
 
-    def ivtLegacy(self, x1, x2) -> float:
+    def ivt(self, x1, x2) -> float:
         # alternatively, check if f(x1) < 0 and f(x2) > 0
         # if self.f(x1) < 0 and self.f(x2) > 0
         if self.f(x1) * self.f(x2) >= 0:
