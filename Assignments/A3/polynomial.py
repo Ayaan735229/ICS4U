@@ -1,5 +1,4 @@
 # TODO: add file information for both driver.py and polynomial.py
-import math, time
 
 class Term:
     def __init__(self, coeff, degree):
