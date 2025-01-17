@@ -1,4 +1,13 @@
+"""
+Ayaan Khan
+735229
+Assignment: IVT
+File: ivt.py
+Purpose: A class that has methods to get zeroes in a polynomial.
+"""
+
 from polynomial import Polynomial
+
 
 class IVT:
     def __init__(self, polynomial):
@@ -15,12 +24,11 @@ class IVT:
             return self.newtons_method(x1, x2)
         return self.ivt(x1, x2)
 
-    # TODO: check if the return statement is supposed to be rounded
     # Also check if this should take 1 or 2 x values as parameters
     def newtons_method(self, x1, x2) -> float:
         """
         Calculates a single root using Newton's method, given two points.
-        
+
         x1 (float)          An x value where f(x) < 0.
         x2 (float)          An x value where f(x) > 0.
         Or viceversa
@@ -32,19 +40,18 @@ class IVT:
 
         return (float)      An approximation of a root, i.e. one of the xn1 values
         """
-        
+
         # Get the derivative, which is important for this method
         deriv = self.polynomial.derivative()
-        
+
         found = False
         # Get the initial xn value
-        xn = (x1+x2)/2
+        xn = (x1 + x2) / 2
         while not found:
             # Get the next xn value
-            xn1 = xn - self.polynomial.f(xn)/deriv.f(xn)
+            xn1 = xn - self.polynomial.f(xn) / deriv.f(xn)
 
             # Compare the two. If they are sufficiently close enough, settle with this x value
-            # TODO: Check which decimal to compare upto (i.e. what to round to here)
             if round(xn, 3) == round(xn1, 3):
                 found = True
                 return xn1
@@ -52,7 +59,6 @@ class IVT:
             xn = xn1
 
     def ivt(self, x1, x2) -> float:
-        # TODO: check if the interval HAS to be +- 0.0004 or can it be +- 0.000499999, which this kinda uses
         """
         Calculates a single root using the Intermediate Value Theorem, given two points.
 
@@ -69,7 +75,7 @@ class IVT:
         found = False
         while not found:
             # Average the x1 and x2 valuesa and calculate f(x0)
-            x0 = (x1+x2)/2
+            x0 = (x1 + x2) / 2
             fx0 = self.polynomial.f(x0)
             n = round(fx0, 3)
 
