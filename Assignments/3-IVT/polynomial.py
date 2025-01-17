@@ -1,5 +1,11 @@
-# TODO: add file information for all files
-# TODO: add more types and pre-reqs for each function
+"""
+Ayaan Khan
+735229
+Assignment: IVT
+File: polynomial.py
+Purpose: A basic polynomial class with methods like getting the order, evaluating with x values, etc.
+"""
+
 
 class Term:
     """
@@ -8,9 +14,11 @@ class Term:
     self.coeff (int)    The coefficient, or "a" value of the term.
     self.degree (int)   The degree to which x is raised.
     """
+
     def __init__(self, coeff, degree):
         self.coeff = coeff
         self.degree = degree
+
 
 class Polynomial:
     """
@@ -18,6 +26,7 @@ class Polynomial:
 
     self.terms (dict<int,int>)  Dictonary representation of the polynomial
     """
+
     def __init__(self, terms):
         """
         Initializes the polynomial.
@@ -32,7 +41,6 @@ class Polynomial:
 
         has_valid = False
         for i in range(len(terms)):
-        # TODO: check if each factor with a coeffecient of 0 really needs to be added
             # If the curr term essentially has a value of 0 and non-zero terms have not been reached, continue
             if terms[i] == 0 and not has_valid:
                 continue
@@ -41,7 +49,7 @@ class Polynomial:
             # Therefore, set has_valid to True
             has_valid = True
             # Calculate the degree
-            deg = len(terms)-i-1
+            deg = len(terms) - i - 1
             # Set the value of the coeffecient matching to the coefficient in the dictionary
             terms_dict[deg] = terms[i]
 
@@ -74,7 +82,6 @@ class Polynomial:
             # Set the absolute value of the coefficient as the start of the term
             temp = str(abs(coeff))
 
-            # TODO: check whether the second last term should be "ax^1" or just "ax"
             # Conflicting things shown on document
             # If the degree isn't 0, the term needs to be multiplied by x
             if (deg):
@@ -83,21 +90,21 @@ class Polynomial:
                 # if deg < 2:
                 if deg != 1:
                     temp += f"^{deg}"
-            
+
             # Add this to the array
             poly_arr.append(temp)
             # Join with a "+" so that it looks nice
         return " ".join(poly_arr)
-    
+
     def get_order(self) -> int:
         """
         Gives the order of the polynomial.
-        
+
         return (int)    The order.
         """
         # Since self.terms.keys() technically returns the degrees, the max of it is the polynomial order
         return max(self.terms.keys())
-            
+
     def f(self, x) -> float:
         """
         Returns the value the polynomial when used as a function.
@@ -135,7 +142,7 @@ class Polynomial:
         order = self.get_order()
         # Create a temporary array with 1 smaller than the original polynomial
         # i.e. this array represents a polynomial with 1 lower order
-        d_terms = [0]*(order)
+        d_terms = [0] * order
 
         for deg in self.terms.keys():
             coeff = self.terms[deg]
@@ -145,7 +152,7 @@ class Polynomial:
             # Using the power rule, f'(ax^n) = anx^(n-1)
             d_coeff = deg * coeff
             # Similar method to the one used in __init__ subtracted
-            idx = order-deg
+            idx = order - deg
             # Set the value at the current index
             d_terms[idx] = d_coeff
 
